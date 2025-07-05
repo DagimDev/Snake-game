@@ -18,6 +18,13 @@ snake[0] = {
 // console.log(snake[0].x);
 // console.log(snake[0].y);
 
+let foods = [
+  {
+    a: Math.floor(Math.random() * row) * scale,
+    b: Math.floor(Math.random() * column) * scale,
+  },
+];
+
 let direction = "right";
 let playGame = setInterval(draw, 100);
 
@@ -30,6 +37,11 @@ function draw() {
     ctx.fillRect(snake[i].x, snake[i].y, scale, scale);
     ctx.strokeRect(snake[i].x, snake[i].y, scale, scale);
   }
+
+  // Draw food square
+  ctx.fillStyle = "yellow";
+  ctx.fillRect(foods[0].a, foods[0].b, scale, scale);
+
   //   if(snake[0].x > 480)  {
   //     return
   //   }
@@ -64,6 +76,6 @@ function draw() {
     y: snakeY,
   };
 
-  snake.pop()
+  snake.pop();
   snake.unshift(newHead);
 }
