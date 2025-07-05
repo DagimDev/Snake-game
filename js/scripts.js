@@ -1,7 +1,7 @@
 const canvas = document.querySelector(".canvas");
 const ctx = canvas.getContext("2d");
 
-console.log(ctx);
+// console.log(ctx);
 
 const scale = 10;
 const row = canvas.height / scale;
@@ -15,8 +15,8 @@ snake[0] = {
   y: Math.floor(Math.random() * column) * scale,
 };
 
-console.log(snake[0].x);
-console.log(snake[0].y);
+// console.log(snake[0].x);
+// console.log(snake[0].y);
 
 let direction = "right";
 let playGame = setInterval(draw, 100);
@@ -24,10 +24,12 @@ let playGame = setInterval(draw, 100);
 function draw() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-  ctx.strokeStyle = "red";
-  ctx.fillStyle = "#fff";
-  ctx.fillRect(snake[0].x, snake[0].y, scale, scale);
-
+  for (let i = 0; i < snake.length; i++) {
+    ctx.strokeStyle = "red";
+    ctx.fillStyle = "#fff";
+    ctx.fillRect(snake[i].x, snake[i].y, scale, scale);
+    ctx.strokeRect(snake[i].x, snake[i].y, scale, scale);
+  }
   //   if(snake[0].x > 480)  {
   //     return
   //   }
@@ -35,21 +37,33 @@ function draw() {
   let snakeX = snake[0].x;
   let snakeY = snake[0].y;
 
-  console.log(`X: ${snakeX}`);
-  console.log(`Y: ${snakeY}`);
+  // console.log(`X: ${snakeX}`);
+  // console.log(`Y: ${snakeY}`);
 
   if (direction === "right") snakeX += scale;
   if (direction === "up") snakeY -= scale;
   if (direction === "left") snakeX -= scale;
   if (direction === "down") snakeY += scale;
 
-  console.log(`next X: ${snakeX}`);
+  // console.log(`next X: ${snakeX}`);
+  if (snakeX > canvas.width) {
+    snakeX = 0;
+    // console.log(true)
+  } else if (snakeX < 0) {
+    snakeX = canvas.width;
+  }
+  if (snakeY > canvas.height) {
+    snakeY = 0;
+    // console.log("Yes for y")
+  } else if (snakeY < 0) {
+    snakeY = canvas.height;
+  }
 
   let newHead = {
     x: snakeX,
     y: snakeY,
   };
 
-  //   snake.pop()
+  snake.pop()
   snake.unshift(newHead);
 }
