@@ -52,6 +52,17 @@ function draw() {
   // console.log(`X: ${snakeX}`);
   // console.log(`Y: ${snakeY}`);
 
+  console.log(foods);
+ document.addEventListener("keydown", (event) => {
+    if (event.key === "ArrowRight" && direction !== "left") direction = "right";
+    else if (event.key === "ArrowUp" && direction !== "down") direction = "up";
+    else if (event.key === "ArrowLeft" && direction !== "right")
+      direction = "left";
+    else if (event.key === "ArrowDown" && direction !== "up")
+      direction = "down";
+    // console.log(event.key)
+  });
+
   if (direction === "right") snakeX += scale;
   if (direction === "up") snakeY -= scale;
   if (direction === "left") snakeX -= scale;
