@@ -53,7 +53,7 @@ function draw() {
   // console.log(`Y: ${snakeY}`);
 
   console.log(foods);
- document.addEventListener("keydown", (event) => {
+  document.addEventListener("keydown", (event) => {
     if (event.key === "ArrowRight" && direction !== "left") direction = "right";
     else if (event.key === "ArrowUp" && direction !== "down") direction = "up";
     else if (event.key === "ArrowLeft" && direction !== "right")
@@ -87,6 +87,14 @@ function draw() {
     y: snakeY,
   };
 
-  snake.pop();
+  if (snakeX === foods[0].a && snakeY === foods[0].b) {
+    foods[0] = {
+      a: Math.floor(Math.random() * row) * scale,
+      b: Math.floor(Math.random() * column) * scale,
+      // console.log(true)
+    };
+  } else {
+    snake.pop();
+  }
   snake.unshift(newHead);
 }
