@@ -46,8 +46,8 @@ function play() {
     mainPlayButton.classList = "img";
     playPouseResumeButton.innerHTML = "pouse";
     playGame = setInterval(() => {
-  draw();
-}, 100);
+      draw();
+    }, 100);
   } else if (playPouseResumeButton.innerHTML === "pouse") {
     playPouseResumeButton.innerHTML = "resume";
     clearInterval(playGame);
@@ -140,12 +140,12 @@ function draw() {
   // Implement localstorage to fetch high score from local storage
   localStorage.setItem("highScore", JSON.stringify(highScore));
 
-   // Show the score on the page
+  // Show the score on the page
   document.querySelector(".score").innerHTML = `score: ${score.s}`;
 
-  // Display the high score 
+  // Display the high score
   const highScoreHTML = document.querySelector(".high-score");
-   if (highScore.s > score.s) {
+  if (highScore.s > score.s) {
     highScoreHTML.innerHTML = `High score: ${highScore.s}`;
   } else if (highScore.s < score.s) {
     highScoreHTML.innerHTML = `High score: ${score.s}`;
@@ -155,3 +155,23 @@ function draw() {
 
 // Show the high score on the page load
 document.querySelector(".high-score").innerHTML = `High score: ${highScore.s}`;
+
+// Implement display settings
+function settings() {
+  document.querySelector(".js-display-setting").innerHTML = `
+  <div class="close" onclick="closeSetting()">x</div>
+ <div class="show">
+  <div class="add-padding-on-setting-btn">
+      <button class="easy-mode"><span>Easy Mode</span> <span class="arrow">&#8594</span></button>
+      <button class="medium-mode"><span>Medium Mode</sapn> <span class="arrow">&#8594</span></button>
+      <button class="hard-mode"><sapn>Hard Mode</span> <span class="arrow">&#8594</span></button>
+      <button class="clear-score" onclick="clearScore()">Clear score</button>
+  </div>
+ </div>
+ 
+ `;
+  document
+    .querySelector(".js-display-setting")
+    .classList.add("display-setting");
+  document.querySelector(".js-display-setting").classList.remove("hide");
+}
