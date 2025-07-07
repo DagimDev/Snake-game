@@ -64,6 +64,9 @@ function play() {
 // Add Button click event on the main play button
 mainPlayButton.addEventListener("click", play);
 
+// Add buton click event on the play, pouse and resume button
+playPouseResumeButton.addEventListener("click", play);
+
 // Draw the whole snake and the food
 function draw() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
