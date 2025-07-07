@@ -90,7 +90,7 @@ function draw() {
   // Implement if the snake is equal to the food make it grow up
   if (snakeX === foods[0].a && snakeY === foods[0].b) {
     // Increase the score if the snake is equal to the food
-
+    score.s++;
     foods[0] = {
       a: Math.floor(Math.random() * row) * scale,
       b: Math.floor(Math.random() * column) * scale,
