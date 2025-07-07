@@ -119,3 +119,6 @@ function draw() {
     highScore.s = score.s;
   }
 }
+
+// Show the high score on the page load
+document.querySelector(".high-score").innerHTML = `High score: ${highScore.s}`;
