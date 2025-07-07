@@ -37,6 +37,25 @@ let playGame = setInterval(() => {
   draw();
 }, 100);
 
+// Determine whether the current status is on play, pouse or resume
+function play() {
+  if (playPouseResumeButton.innerHTML === "play") {
+    mainPlayButton.classList = "hide";
+    playPouseResumeButton.innerHTML = "pouse";
+    playGame;
+  } else if (playPouseResumeButton.innerHTML === "pouse") {
+    playPouseResumeButton.innerHTML = "resume";
+    clearInterval(playGame);
+    console.log("pouse");
+  } else if (playPouseResumeButton.innerHTML === "resume") {
+    playPouseResumeButton.innerHTML = "pouse";
+    playGame = setInterval(() => {
+      draw();
+    }, 100);
+    console.log("resume");
+  }
+}
+
 // Draw the whole snake and the food
 function draw() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
