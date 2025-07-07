@@ -32,17 +32,22 @@ let foods = [
 // set direction for snake
 let direction = "right";
 
+const mainPlayButton = document.querySelector(".js-img");
+const playPouseResumeButton = document.querySelector(
+  ".js-play-pouse-resume-btn"
+);
+
 // Set time interval to play
-let playGame = setInterval(() => {
-  draw();
-}, 100);
+let playGame;
 
 // Determine whether the current status is on play, pouse or resume
 function play() {
   if (playPouseResumeButton.innerHTML === "play") {
-    mainPlayButton.classList = "hide";
+    mainPlayButton.classList = "img";
     playPouseResumeButton.innerHTML = "pouse";
-    playGame;
+    playGame = setInterval(() => {
+  draw();
+}, 100);
   } else if (playPouseResumeButton.innerHTML === "pouse") {
     playPouseResumeButton.innerHTML = "resume";
     clearInterval(playGame);
@@ -55,6 +60,9 @@ function play() {
     console.log("resume");
   }
 }
+
+// Add Button click event on the main play button
+mainPlayButton.addEventListener("click", play);
 
 // Draw the whole snake and the food
 function draw() {
