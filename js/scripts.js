@@ -32,7 +32,10 @@ let foods = [
 // set direction for snake
 let direction = "right";
 
-let playGame = setInterval(draw, 100);
+// Set time interval to play
+let playGame = setInterval(() => {
+  draw();
+}, 100);
 
 // Draw the whole snake and the food
 function draw() {
