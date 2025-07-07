@@ -175,3 +175,20 @@ function settings() {
     .classList.add("display-setting");
   document.querySelector(".js-display-setting").classList.remove("hide");
 }
+
+// Implement close the setting when click the button
+function closeSetting() {
+  const close1 = document.querySelector(".js-display-setting");
+  close1.classList.add("hide");
+  console.log("yesrrr");
+}
+
+// Add clear score function to clear the stored high score from localStorage
+function clearScore() {
+  highScore.s = 0;
+  localStorage.clear("highScore");
+  document.querySelector(
+    ".high-score"
+  ).innerHTML = `High score: ${highScore.s}`;
+  alert("Score is cleared from local storage")
+}
