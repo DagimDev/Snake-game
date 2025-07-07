@@ -10,7 +10,8 @@ let score = {
   s: 0,
 };
 
-let highScore = {
+// Add locale storage on highScore
+let highScore = JSON.parse(localStorage.getItem("highScore")) || {
   s: 0,
 };
 
@@ -102,6 +103,9 @@ function draw() {
 
   // Add the snake in the front
   snake.unshift(newHead);
+
+  // Implement localstorage to fetch high score from local storage
+  localStorage.setItem("highScore", JSON.stringify(highScore));
 
    // Show the score on the page
   document.querySelector(".score").innerHTML = `score: ${score.s}`;
