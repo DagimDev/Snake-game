@@ -1,13 +1,18 @@
 const canvas = document.querySelector(".canvas");
 const ctx = canvas.getContext("2d");
 
-// console.log(ctx);
-
 const scale = 10;
 const row = canvas.height / scale;
 const column = canvas.width / scale;
-// console.log(`Row: ${row}`)
-// console.log(`Column: ${column}`)
+
+// Initialize score and high score
+let score = {
+  s: 0,
+};
+
+let highScore = {
+  s: 0,
+};
 
 const snake = [];
 snake[0] = {
@@ -15,9 +20,7 @@ snake[0] = {
   y: Math.floor(Math.random() * column) * scale,
 };
 
-// console.log(snake[0].x);
-// console.log(snake[0].y);
-
+// Implement random food generation
 let foods = [
   {
     a: Math.floor(Math.random() * row) * scale,
@@ -25,34 +28,32 @@ let foods = [
   },
 ];
 
+// set direction for snake
 let direction = "right";
+
 let playGame = setInterval(draw, 100);
 
+// Draw the whole snake and the food
 function draw() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
 
   for (let i = 0; i < snake.length; i++) {
     ctx.strokeStyle = "red";
-    ctx.fillStyle = "#fff";
+    ctx.fillStyle = "#00ff7f";
     ctx.fillRect(snake[i].x, snake[i].y, scale, scale);
-    ctx.strokeRect(snake[i].x, snake[i].y, scale, scale);
   }
 
   // Draw food square
-  ctx.fillStyle = "yellow";
+  ctx.fillStyle = "#ff3838";
   ctx.fillRect(foods[0].a, foods[0].b, scale, scale);
+  ctx.shadowColor = "#ff2a6d";
+  ctx.shadowBlur = 15;
 
-  //   if(snake[0].x > 480)  {
-  //     return
-  //   }
-
+  // Create a variable for simplycity
   let snakeX = snake[0].x;
   let snakeY = snake[0].y;
 
-  // console.log(`X: ${snakeX}`);
-  // console.log(`Y: ${snakeY}`);
-
-  console.log(foods);
+  // Add keydown event to handle a snake movement
   document.addEventListener("keydown", (event) => {
     if (event.key === "ArrowRight" && direction !== "left") direction = "right";
     else if (event.key === "ArrowUp" && direction !== "down") direction = "up";
@@ -60,41 +61,45 @@ function draw() {
       direction = "left";
     else if (event.key === "ArrowDown" && direction !== "up")
       direction = "down";
-    // console.log(event.key)
   });
 
+  // Set a direction depend on the user intraction
   if (direction === "right") snakeX += scale;
   if (direction === "up") snakeY -= scale;
   if (direction === "left") snakeX -= scale;
   if (direction === "down") snakeY += scale;
 
-  // console.log(`next X: ${snakeX}`);
+  // Loop the snake if it reaches the maximum width and height
   if (snakeX > canvas.width) {
     snakeX = 0;
-    // console.log(true)
   } else if (snakeX < 0) {
     snakeX = canvas.width;
   }
   if (snakeY > canvas.height) {
     snakeY = 0;
-    // console.log("Yes for y")
   } else if (snakeY < 0) {
     snakeY = canvas.height;
   }
 
+  // if the snake eats it grows through new added snake head
   let newHead = {
     x: snakeX,
     y: snakeY,
   };
 
+  // Implement if the snake is equal to the food make it grow up
   if (snakeX === foods[0].a && snakeY === foods[0].b) {
+    // Increase the score if the snake is equal to the food
+
     foods[0] = {
       a: Math.floor(Math.random() * row) * scale,
       b: Math.floor(Math.random() * column) * scale,
-      // console.log(true)
     };
   } else {
+    // if the snake is not equal to the food the previuos snake will be poped up
     snake.pop();
   }
+
+  // Add the snake in the front
   snake.unshift(newHead);
 }
