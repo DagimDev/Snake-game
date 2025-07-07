@@ -102,4 +102,7 @@ function draw() {
 
   // Add the snake in the front
   snake.unshift(newHead);
+
+   // Show the score on the page
+  document.querySelector(".score").innerHTML = `score: ${score.s}`;
 }
