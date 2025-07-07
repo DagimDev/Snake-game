@@ -105,4 +105,13 @@ function draw() {
 
    // Show the score on the page
   document.querySelector(".score").innerHTML = `score: ${score.s}`;
+
+  // Display the high score 
+  const highScoreHTML = document.querySelector(".high-score");
+   if (highScore.s > score.s) {
+    highScoreHTML.innerHTML = `High score: ${highScore.s}`;
+  } else if (highScore.s < score.s) {
+    highScoreHTML.innerHTML = `High score: ${score.s}`;
+    highScore.s = score.s;
+  }
 }
