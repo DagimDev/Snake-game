@@ -25,6 +25,27 @@ body {
   padding-bottom: 2px;
   color: #fff;
 }
+.play {
+  position: absolute;
+  top: 53%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  overflow: hidden;
+}
+.play div {
+  width: 400px;
+  height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  transition-duration: 1s;
+}
+
+.play div:hover {
+  margin-bottom: 10px;
+  transition-duration: 1s;
+}
 .canvas{
     background-color: #000;
 }
