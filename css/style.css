@@ -176,3 +176,27 @@ button {
   background-color: #1e1e2a;
   border: 1px solid rgba(255, 255, 255, 0.05);
 }
+
+.img {
+  display: none;
+}
+
+.controlers {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+
+.controlers button {
+  color: #fff;
+  font-size: 25px;
+  padding: 10px;
+  margin-right: 5px;
+  border: none;
+}
+
+.add-padding-on-setting-btn button {
+  padding: 20px;
+  margin-bottom: 10px;
+}
