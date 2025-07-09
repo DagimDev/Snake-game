@@ -52,6 +52,25 @@ body {
   justify-content: space-between;
   padding: 5px;
 }
+button {
+  background: #4caf50; /* Fresh green */
+  color: white;
+  border: none;
+  border-radius: 8px;
+  box-shadow: 0 4px 0 #3e8e41; /* Depth effect */
+  transition: all 0.2s;
+
+  &:hover {
+    background: #66bb6a; /* Lighter green */
+    transform: translateY(-2px);
+    box-shadow: 0 6px 0 #3e8e41;
+  }
+
+  &:active {
+    transform: translateY(1px);
+    box-shadow: 0 2px 0 #3e8e41;
+  }
+}
 .canvas{
     background-color: #000;
 }
