@@ -96,6 +96,77 @@ button {
     text-shadow: 0 0 12px #00f5d4;
   }
 }
+.setting-btn,
+.start-pouse-btn {
+  padding: 3px;
+}
+.display-setting {
+  position: absolute;
+  top: 0;
+  left: 0%;
+  /* transform: translate(-50%, -50%); */
+  color: #fff;
+  z-index: 10;
+  margin-top: -10px;
+}
+
+.hide {
+  display: none;
+}
+.show {
+  width: 400px;
+  height: 585px;
+  background: #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: -2px;
+}
+.close {
+  background: #000;
+  margin-top: 10px;
+  padding-left: 10px;
+  font-size: 20px;
+  color: red;
+  cursor: pointer;
+}
+.easy-mode,
+.medium-mode,
+.hard-mode,
+.clear-score {
+  padding: 10px;
+  cursor: pointer;
+}
+.clear-score {
+  border: none;
+}
+.easy-mode {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.medium-mode {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.hard-mode {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.arrow {
+  float: right;
+}
+.easy-mode .arrow {
+  margin-left: 10px;
+}
+.medium-mode .arrow {
+  margin-left: 10px;
+}
+.hard-mode .arrow {
+  margin-left: 10px;
+}
 .canvas{
     background-color: #000;
 }
