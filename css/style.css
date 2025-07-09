@@ -167,6 +167,12 @@ button {
 .hard-mode .arrow {
   margin-left: 10px;
 }
-.canvas{
-    background-color: #000;
+.canva-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.canvas {
+  background-color: #1e1e2a;
+  border: 1px solid rgba(255, 255, 255, 0.05);
 }
